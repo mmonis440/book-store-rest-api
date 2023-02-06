@@ -9,6 +9,19 @@ var path = require('path');
 var cookieparser = require ('cookie-parser');
 var mongoose = require('mongoose');
 
+//require('dotenv').config();
+//const mongoString = process.env.DATABASE_URL
+
+//mongoose.connect(mongoString);
+//const database = mongoose.connection
+
+/*database.on('error', (error) => {
+  console.log(error)
+})
+
+database.once('connected', () => {
+  console.log('Database Connected');
+});*/
 
 const ads = [
   {title: 'Hello, world (again)!'}
@@ -22,7 +35,7 @@ app.use(morgan('combined'));
 const port = 8000;
 const {startDatabase} = require('./database/mongo');
 const {insertAd, getAds} = require('./database/ads');
-const {deleteAd,updateAd} = require ('./database/ads')
+const {deleteAd,updateAd} = require ('./database/ads');
 
 
 
@@ -47,9 +60,9 @@ const {deleteAd,updateAd} = require ('./database/ads')
 res.send({messaggeupdate : 'item updated sucessfully'}) 
  })
 
- startDatabase().then(async () => {
-  await insertAd({title: 'Hello, now from the in-memory database!'});
- });
+async function start(){
+  await insertAd({title :"Hello the rest api of volume bank amsws console"});
+};
 
 
  app.listen(port , ()=>console.log(`databases is listening on ${port}`))
